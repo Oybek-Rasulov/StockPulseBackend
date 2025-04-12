@@ -1,8 +1,6 @@
 # Node modules
 node_modules/
 
-serviceAccountKey.json
-
 # Environment variables
 .env
 .env.local
@@ -40,3 +38,4 @@ build/
 *.dump
 *.sql
 
+serviceAccountKey.json
