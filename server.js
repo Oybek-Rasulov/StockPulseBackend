@@ -5,6 +5,8 @@ import cors from 'cors';
 import admin from 'firebase-admin';
 import { encrypt, decrypt } from './utils/cryptoUtils.js';
 import axios from 'axios';
+import fs from 'fs';
+const serviceAccount = JSON.parse(fs.readFileSync('./serviceAccountKey.json', 'utf8'));
 
 env.config();
 const app = express();
@@ -21,6 +23,9 @@ const db = new pg.Client({
 })
 
 db.connect();
+
+// Firebase
+import serviceAccount from './serviceAccountKey.json' assert { type: 'json' };
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -85,7 +90,7 @@ app.post('/api/auth/firebase-login', async (req, res) => {
   app.get('/api/news', async (req, res) => {
     try {
       const response = await axios.get(
-        'https://gnews.io/api/v4/search?q=bitcoin&lang=en&token=dbc3aae76e5d9cc0421e01652e8c407f'
+        'https://newsapi.org/v2/everything?q=bitcoin&apiKey=7987dd19f16346448be62d81d126af3e'
       );
       // console.log(response.data)
       res.json(response.data); // forward the data to frontend
