@@ -24,9 +24,6 @@ const db = new pg.Client({
 
 db.connect();
 
-// Firebase
-import serviceAccount from './serviceAccountKey.json' assert { type: 'json' };
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
