@@ -5,12 +5,14 @@ import cors from 'cors';
 import admin from 'firebase-admin';
 import { encrypt, decrypt } from './utils/cryptoUtils.js';
 import axios from 'axios';
-import fs from 'fs';
-
-const serviceAccount = JSON.parse(fs.readFileSync('./serviceAccountKey.json', 'utf8'));
-
 
 env.config();
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 const app = express();
 const PORT = process.env.PORT || 5000;
 
