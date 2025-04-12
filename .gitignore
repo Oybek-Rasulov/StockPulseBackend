@@ -1,6 +1,8 @@
 # Node modules
 node_modules/
 
+serviceAccountKey.json
+
 # Environment variables
 .env
 .env.local
@@ -37,3 +39,4 @@ build/
 # Postgres backups
 *.dump
 *.sql
+
