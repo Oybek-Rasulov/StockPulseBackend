@@ -89,7 +89,7 @@ app.post('/api/auth/firebase-login', async (req, res) => {
       const response = await axios.get(
         'https://newsapi.org/v2/everything?q=bitcoin&apiKey=7987dd19f16346448be62d81d126af3e'
       );
-      // console.log(response.data)
+      console.log(response.data)
       res.json(response.data); // forward the data to frontend
     } catch (error) {
       console.error('Failed to fetch news:', error.message);
